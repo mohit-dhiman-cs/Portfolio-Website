@@ -39,11 +39,13 @@ export function StartScreen() {
             transition={{ delay: 0.3, type: "spring" }}
             className="w-32 h-32 mx-auto mb-8 relative"
           >
-            <div className="w-full h-full rounded-full bg-gradient-to-br from-cyan-500 via-purple-500 to-pink-500 p-1 shadow-2xl shadow-cyan-500/50">
-              <div className="w-full h-full rounded-full bg-[#0a0a0f] flex items-center justify-center">
-                <span className="text-5xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-                  MD
-                </span>
+            <div className="w-full h-full rounded-full bg-gradient-to-br from-cyan-500 via-purple-500 to-pink-500 p-1 shadow-2xl shadow-cyan-500/50 overflow-hidden">
+              <div className="w-full h-full rounded-full bg-[#0a0a0f] flex items-center justify-center overflow-hidden">
+                <img 
+                  src="/avatar.jpg" 
+                  alt="Mohit Dhiman" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
             <div className="absolute inset-0 rounded-full bg-cyan-500/20 blur-xl animate-pulse"></div>
