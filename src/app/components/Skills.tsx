@@ -64,6 +64,12 @@ export function Skills() {
     "Debugging",
     "Team Collaboration",
     "Time Management",
+    "Effective Communication",
+    "Adaptability",
+    "Critical Thinking",
+    "Leadership",
+    "Emotional Intelligence",
+    "Creativity",
   ];
 
   return (
