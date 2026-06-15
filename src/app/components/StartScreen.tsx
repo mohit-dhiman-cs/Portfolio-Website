@@ -1,7 +1,30 @@
 import { motion } from "motion/react";
 import { Link } from "react-router";
 import { ChevronRight, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Float } from "@react-three/drei";
+import * as THREE from 'three';
+
+function HeroShape() {
+  const meshRef = useRef<THREE.Mesh>(null);
+
+  useFrame((state, delta) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x += delta * 0.5;
+      meshRef.current.rotation.y += delta * 0.5;
+    }
+  });
+
+  return (
+    <Float speed={3} rotationIntensity={2} floatIntensity={3}>
+      <mesh ref={meshRef}>
+        <icosahedronGeometry args={[2, 0]} />
+        <meshStandardMaterial color="#00ffff" wireframe />
+      </mesh>
+    </Float>
+  );
+}
 
 export function StartScreen() {
   const [displayText, setDisplayText] = useState("");
@@ -32,6 +55,21 @@ export function StartScreen() {
         >
           <div className="text-cyan-400 text-sm font-mono mb-4">{displayText}_</div>
           
+          {/* 3D Hero Element */}
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 1 }}
+            className="w-64 h-64 mx-auto mb-8 relative"
+          >
+            <div className="absolute inset-0 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
+            <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
+              <ambientLight intensity={0.5} />
+              <directionalLight position={[10, 10, 5]} intensity={1} />
+              <HeroShape />
+            </Canvas>
+          </motion.div>
+
           {/* Glowing Avatar */}
           <motion.div
             initial={{ scale: 0 }}
