@@ -1,7 +1,7 @@
 import { Outlet, Link, useLocation } from "react-router";
 import { motion } from "motion/react";
 import { User, Trophy, Briefcase, Code, Mail, Target, Home } from "lucide-react";
-import { ParticleBackground } from "./ParticleBackground";
+import { SceneBackground } from "./SceneBackground";
 
 export function Root() {
   const location = useLocation();
@@ -18,7 +18,7 @@ export function Root() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white relative overflow-hidden">
-      <ParticleBackground />
+      <SceneBackground />
       
       {/* Cyberpunk grid background */}
       <div className="fixed inset-0 opacity-20 pointer-events-none">
